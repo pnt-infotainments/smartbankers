@@ -4,7 +4,7 @@ class Administrator::JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    @jobs = Job.all.order('updated_at DESC')
   end
 
   # GET /jobs/1
@@ -28,7 +28,7 @@ class Administrator::JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to administrator_job_path((@job)), notice: 'Job was successfully created.' }
+        format.html { redirect_to administrator_job_path(@job), notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }

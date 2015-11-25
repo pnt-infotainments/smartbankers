@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Listing Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @administrator_users.each do |administrator_user| %>
+      <tr>
+        <td><%= administrator_user.email%></td>
+        <td><%= administrator_user.sign_in_count%></td>
+        <td><%= administrator_user.created_at%></td>
+        <td><%= link_to 'Show', administrator_user_path(administrator_user) %></td>
+        <td><%= link_to 'Edit', edit_administrator_user_path(administrator_user) %></td>
+        <td><%= link_to 'Destroy', administrator_user_path(administrator_user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

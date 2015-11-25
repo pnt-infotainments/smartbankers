@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
   
-  get 'home/index'
-
-  get 'jobs/index'
-
+  
+  devise_for :users
+  get 'home' => 'home#index', as: :home
+  root 'home#index'
+  
+  get 'jobs' => 'jobs#index', as: :jobs
   get 'jobs/show'
 
-  get 'post/index'
+  get 'posts' => 'post#index', as: :posts
+  resources :subscribes
 
   namespace :administrator do
     resources :jobs
     resources :posts
     resources :post_types
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :subscribe, only: [:index, :show, :edit, :update, :destroy]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

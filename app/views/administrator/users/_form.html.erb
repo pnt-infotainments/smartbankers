@@ -1,0 +1,17 @@
+<%= form_for([:administrator, @administrator_user]) do |f| %>
+  <% if @administrator_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@administrator_user.errors.count, "error") %> prohibited this administrator_user from being saved:</h2>
+
+      <ul>
+      <% @administrator_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div>We will update this page </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
